@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AVATAAR - National Level Hackathon 2025</title>
+  <meta name="description" content="AVATAAR is a 24-hour national level hackathon bringing together innovators from across India.">
+  <link rel="stylesheet" href="./css/style.css">
+  
+  <style>
+    /* Style for the new Header Logos - INCREASED SIZE */
+    .header-logo-img {
+        height: 80px; /* Changed from 50px to 80px for bigger logos */
+        width: auto;
+        object-fit: contain;
+    }
+    
+    /* Team Scroller Styles */
+    .team-scroll-container {
+        width: 100%;
+        overflow: hidden;
+        padding: 2rem 0;
+        background: rgba(0,0,0,0.2);
+        margin-bottom: 2rem;
+        border-radius: 1rem;
+        border: 1px solid hsla(187, 100%, 50%, 0.2);
+    }
+    
+    .team-scroll-track {
+        display: flex;
+        gap: 2rem;
+        width: max-content;
+        animation: scroll 15s linear infinite;
+    }
+    
+    .team-member-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        flex-shrink: 0;
+    }
+    
+    .team-member-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #00d4ff; /* Neon Cyan border */
+        margin-bottom: 0.5rem;
+        background-color: #1a1a1a;
+    }
+    
+    .team-member-name {
+        color: #fff;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 0.8rem;
+        text-align: center;
+    }
+
+    /* Animation Keyframes */
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); } 
+    }
+
+    /* Hover to pause */
+    .team-scroll-track:hover {
+        animation-play-state: paused;
+    }
+  </style>
+</head>
+<body>
+  <header id="header" class="header">
+    <div class="container">
+      <nav class="nav" style="justify-content: space-between;">
+        
+        <img src="./images/nie.png" alt="College Logo" class="header-logo-img">
+
+        <div style="display: flex; align-items: center; gap: 1rem;">
+             <button onclick="scrollToSection('#home')" class="logo-btn">
+            <img src="./images/image.png" alt="AVATAAR Logo" class="logo-img">
+            <span class="logo-text neon-text">AVATAAR</span>
+            </button>
+            
+            <div class="nav-links">
+            <button onclick="scrollToSection('#home')" class="nav-link">Home</button>
+            <button onclick="scrollToSection('#about')" class="nav-link">About</button>
+            <button onclick="scrollToSection('#tracks')" class="nav-link">Tracks</button>
+            <button onclick="scrollToSection('#schedule')" class="nav-link">Schedule</button>
+            <button onclick="scrollToSection('#prizes')" class="nav-link">Prizes</button>
+            <button onclick="scrollToSection('#sponsors')" class="nav-link">Sponsors</button>
+            <button onclick="scrollToSection('#faqs')" class="nav-link">FAQs</button>
+            </div>
+        </div>
+        
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <div class="nav-register">
+            <button onclick="scrollToSection('#register')" class="btn btn-neon">Register Now</button>
+            </div>
+
+            <img src="./images/ece.jpg" alt="Department Logo" class="header-logo-img">
+            
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+            <svg class="menu-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg class="close-icon hidden" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            </button>
+        </div>
+      </nav>
+    </div>
+    
+    <div id="mobile-menu" class="mobile-menu">
+      <div class="container">
+        <button onclick="scrollToSection('#home')" class="mobile-nav-link">Home</button>
+        <button onclick="scrollToSection('#about')" class="mobile-nav-link">About</button>
+        <button onclick="scrollToSection('#tracks')" class="mobile-nav-link">Tracks</button>
+        <button onclick="scrollToSection('#schedule')" class="mobile-nav-link">Schedule</button>
+        <button onclick="scrollToSection('#prizes')" class="mobile-nav-link">Prizes</button>
+        <button onclick="scrollToSection('#sponsors')" class="mobile-nav-link">Sponsors</button>
+        <button onclick="scrollToSection('#faqs')" class="mobile-nav-link">FAQs</button>
+        <button onclick="scrollToSection('#register')" class="btn btn-neon mobile-register-btn">Register Now</button>
+      </div>
+    </div>
+  </header>
+
+  <section id="home" class="hero-section">
+    <div class="hero-bg-gradient"></div>
+    <div class="hero-bg-radial"></div>
+    <canvas id="particle-canvas" class="particle-canvas"></canvas>
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+    <div class="hero-content container">
+      <div class="hero-inner">
+        <div class="hero-badge animate-fade-in">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sparkles-icon">
+            <path d="M12 3l1.912 5.813a2 2 0 001.275 1.275L21 12l-5.813 1.912a2 2 0 00-1.275 1.275L12 21l-1.912-5.813a2 2 0 00-1.275-1.275L3 12l5.813-1.912a2 2 0 001.275-1.275L12 3z"></path>
+          </svg>
+          <span>National Level Hackathon</span>
+        </div>
+        <h1 class="hero-title animate-fade-in delay-100">
+          <span class="neon-text">AVATAAR</span>
+        </h1>
+        <p class="hero-tagline animate-fade-in delay-200">"Innovate Today, Shape Tomorrow"</p>
+        <div class="hero-details animate-fade-in delay-300">
+          <span class="detail-item">
+            <span class="detail-dot"></span>
+            March 1 – March 2, 2026
+          </span>
+          <span class="detail-separator">|</span>
+          <span>Department of Electronics and Communication</span>
+        </div>
+        <div class="hero-cta animate-fade-in delay-400">
+          <button onclick="scrollToSection('#register')" class="btn btn-neon btn-lg">Register Now</button>
+          <button onclick="scrollToSection('#about')" class="btn btn-outline btn-lg">Learn More</button>
+        </div>
+        <div class="countdown-wrapper animate-fade-in delay-500">
+          <p class="countdown-label">HACKATHON STARTS IN</p>
+          <div class="countdown-timer" id="countdown">
+            <div class="countdown-unit">
+              <div class="countdown-glow"></div>
+              <div class="countdown-box"><span id="days" class="countdown-value">00</span></div>
+              <span class="countdown-unit-label">Days</span>
+            </div>
+            <span class="countdown-separator">:</span>
+            <div class="countdown-unit">
+              <div class="countdown-glow"></div>
+              <div class="countdown-box"><span id="hours" class="countdown-value">00</span></div>
+              <span class="countdown-unit-label">Hours</span>
+            </div>
+            <span class="countdown-separator">:</span>
+            <div class="countdown-unit">
+              <div class="countdown-glow"></div>
+              <div class="countdown-box"><span id="minutes" class="countdown-value">00</span></div>
+              <span class="countdown-unit-label">Minutes</span>
+            </div>
+            <span class="countdown-separator">:</span>
+            <div class="countdown-unit">
+              <div class="countdown-glow"></div>
+              <div class="countdown-box"><span id="seconds" class="countdown-value">00</span></div>
+              <span class="countdown-unit-label">Seconds</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button onclick="scrollToSection('#about')" class="scroll-indicator" aria-label="Scroll down">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </button>
+  </section>
+
+  <section id="about" class="about-section section-animate">
+    <div class="about-bg"></div>
+    <div class="section-line"></div>
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">About <span class="neon-text">AVATAAR</span></h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p><span class="highlight">AVATAAR</span> is a 24-hour national level hackathon that brings together innovative minds from across the country to solve real-world challenges through technology and creativity.</p>
+          <p>The hackathon features four focused tracks — <strong>Defence</strong>, <strong>Agriculture</strong>, <strong>Sustainability</strong>, and <strong>Healthcare</strong> — encouraging participants to develop impactful solutions in critical sectors that shape the future.</p>
+          <p>Open to all students, AVATAAR provides a collaborative environment to ideate, build, and present meaningful projects. Join us to innovate, compete, and create solutions that make a real difference.</p>
+        </div>
+        
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3>Open to All Branches</h3>
+            <p>Students from any college, any branch, and any year can participate (but only hardware)</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="6"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+              </svg>
+            </div>
+            <h3>Real-World Problems</h3>
+            <p>Tackle industry-relevant challenges with innovative solutions</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="9" y1="18" x2="15" y2="18"></line>
+                <line x1="10" y1="22" x2="14" y2="22"></line>
+                <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path>
+              </svg>
+            </div>
+            <h3>Learn & Grow</h3>
+            <p>Gain amazing experience through hands-on development and unlock valuable networking opportunities.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+                <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
+                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+              </svg>
+            </div>
+            <h3>Launch Your Ideas</h3>
+            <p>Transform your concepts into working prototypes in 24 hours</p>
+          </div>
+        </div>
+      </div>
+      
+      </div>
+  </section>
+
+  <section id="tracks" class="tracks-section section-animate">
+    <div class="tech-grid-bg"></div>
+    <div class="tracks-bg"></div>
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Hackathon <span class="neon-text-purple">Tracks</span></h2>
+        <p class="section-subtitle">Develop hardware and embedded solutions using Cadence and ECE technologies</p>
+        <div class="section-divider purple"></div>
+      </div>
+      <div class="tracks-grid">
+        <div class="track-card">
+          <div class="track-glow"></div>
+          <div class="track-content">
+            <div class="track-animated-border"></div>
+            <div class="track-inner">
+              <div class="track-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                </svg>
+              </div>
+              <h3>Health Sector</h3>
+              <p>Design low-power bio-medical sensors and hardware systems for patient monitoring using Cadence tools.</p>
+            </div>
+          </div>
+        </div>
+        <div class="track-card">
+          <div class="track-glow"></div>
+          <div class="track-content">
+            <div class="track-animated-border"></div>
+            <div class="track-inner">
+              <div class="track-icon purple">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <h3>Defence</h3>
+              <p>Build secure communication hardware, radar signal processing units, and rugged embedded systems.</p>
+            </div>
+          </div>
+        </div>
+        <div class="track-card">
+          <div class="track-glow"></div>
+          <div class="track-content">
+            <div class="track-animated-border"></div>
+            <div class="track-inner">
+              <div class="track-icon green">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                  <path d="M12 6v12"></path>
+                  <path d="M6 12h12"></path>
+                  <path d="M7 9l2-2"></path>
+                  <path d="M15 17l2-2"></path>
+                  <path d="M17 9l-2-2"></path>
+                  <path d="M9 17l-2-2"></path>
+                </svg>
+              </div>
+              <h3>Sustainability</h3>
+              <p>Create energy-efficient circuits and power management systems for green electronics and smart grids.</p>
+            </div>
+          </div>
+        </div>
+        <div class="track-card">
+          <div class="track-glow"></div>
+          <div class="track-content">
+            <div class="track-animated-border"></div>
+            <div class="track-inner">
+              <div class="track-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2a10 10 0 1 0 10 10"></path>
+                  <path d="M12 12V2"></path>
+                  <path d="M12 12l8-8"></path>
+                  <path d="M16 6h4"></path>
+                  <path d="M20 6v4"></path>
+                </svg>
+              </div>
+              <h3>Agriculture</h3>
+              <p>Develop IoT-based soil monitoring sensors and automated hardware systems for smart farming.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="schedule" class="schedule-section section-animate">
+    <div class="schedule-bg"></div>
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Event <span class="neon-text">Schedule</span></h2>
+        <p class="section-subtitle">24 hours of hardware innovation and development</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="day-tabs">
+        <button class="day-tab active" data-day="0" onclick="setActiveDay(0)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span>Day 1</span>
+          <span class="day-date">March 1, 2026</span>
+        </button>
+        <button class="day-tab" data-day="1" onclick="setActiveDay(1)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span>Day 2</span>
+          <span class="day-date">March 2, 2026</span>
+        </button>
+      </div>
+      
+      <div class="timeline">
+        <div class="timeline-line"></div>
+        <div id="day-0-events" class="day-events">
+          <div class="timeline-event left">
+            <div class="timeline-dot"></div>
+            <div class="event-card">
+              <div class="event-header">
+                <div class="event-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                </div>
+                <span class="event-time">9:00 AM</span>
+              </div>
+              <h3>Registration & Check-in</h3>
+              <p>Welcome desk opens</p>
+            </div>
+          </div>
+          <div class="timeline-event right">
+            <div class="timeline-dot"></div>
+            <div class="event-card">
+              <div class="event-header">
+                <div class="event-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="7"></circle>
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                  </svg>
+                </div>
+                <span class="event-time">10:00 AM</span>
+              </div>
+              <h3>Inauguration Ceremony</h3>
+              <p>Opening address by dignitaries</p>
+            </div>
+          </div>
+          <div class="timeline-event left">
+            <div class="timeline-dot"></div>
+            <div class="event-card">
+              <div class="event-header">
+                <div class="event-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                </div>
+                <span class="event-time">11:00 AM</span>
+              </div>
+              <h3>Hackathon Begins!</h3>
+              <p>24-hour countdown starts</p>
+            </div>
+          </div>
+        </div>
+        <div id="day-1-events" class="day-events hidden">
+          <div class="timeline-event left">
+            <div class="timeline-dot"></div>
+            <div class="event-card">
+              <div class="event-header">
+                <div class="event-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                </div>
+                <span class="event-time">9:00 AM</span>
+              </div>
+              <h3>Final Push</h3>
+              <p>Last hours of development</p>
+            </div>
+          </div>
+          <div class="timeline-event right">
+            <div class="timeline-dot"></div>
+            <div class="event-card">
+              <div class="event-header">
+                <div class="event-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                  </svg>
+                </div>
+                <span class="event-time">11:00 AM</span>
+              </div>
+              <h3>Submission & Presentation</h3>
+              <p>Project submission and demo to judges</p>
+            </div>
+          </div>
+          <div class="timeline-event left">
+            <div class="timeline-dot"></div>
+            <div class="event-card">
+              <div class="event-header">
+                <div class="event-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="7"></circle>
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                  </svg>
+                </div>
+                <span class="event-time">2:00 PM</span>
+              </div>
+              <h3>Valedictory Ceremony</h3>
+              <p>Results & prize distribution</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prizes" class="prizes-section section-animate">
+    <div class="prizes-bg"></div>
+    <div class="prizes-radial"></div>
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Prizes & <span class="neon-text-purple">Rewards</span></h2>
+        <p class="section-subtitle">Win amazing prizes, gain industry exposure, and kickstart your career</p>
+        <div class="section-divider purple"></div>
+      </div>
+      <div class="prizes-grid">
+        <div class="prize-card first">
+          <div class="prize-glow gold"></div>
+          <div class="prize-content">
+            <div class="prize-badge gold">1st Place</div>
+            <div class="prize-icon-wrapper gold">
+              <div class="prize-icon-inner">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#gold-gradient)" stroke-width="2">
+                  <defs>
+                    <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#fbbf24"/>
+                      <stop offset="100%" style="stop-color:#d97706"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                  <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                  <path d="M4 22h16"></path>
+                  <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                  <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                  <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                </svg>
+              </div>
+            </div>
+            <h3 class="prize-amount">₹50,000</h3>
+            <p class="prize-title">First Prize</p>
+            <ul class="prize-perks">
+              <li><span class="perk-dot"></span>Cash Prize</li>
+              <li><span class="perk-dot"></span>Appreciations</li>
+              <li><span class="perk-dot"></span>Goodies & Swag</li>
+              <li><span class="perk-dot"></span>Certificate of Excellence</li>
+            </ul>
+          </div>
+        </div>
+        <div class="prize-card second">
+          <div class="prize-glow silver"></div>
+          <div class="prize-content">
+            <div class="prize-badge silver">2nd Place</div>
+            <div class="prize-icon-wrapper silver">
+              <div class="prize-icon-inner">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#silver-gradient)" stroke-width="2">
+                  <defs>
+                    <linearGradient id="silver-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#d1d5db"/>
+                      <stop offset="100%" style="stop-color:#6b7280"/>
+                    </linearGradient>
+                  </defs>
+                  <circle cx="12" cy="8" r="7"></circle>
+                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                </svg>
+              </div>
+            </div>
+            <h3 class="prize-amount">₹30,000</h3>
+            <p class="prize-title">Second Prize</p>
+            <ul class="prize-perks">
+              <li><span class="perk-dot"></span>Cash Prize</li>
+              <li><span class="perk-dot"></span>Appreciations</li>
+              <li><span class="perk-dot"></span>Goodies & Swag</li>
+              <li><span class="perk-dot"></span>Certificate of Excellence</li>
+            </ul>
+          </div>
+        </div>
+        <div class="prize-card third">
+          <div class="prize-glow bronze"></div>
+          <div class="prize-content">
+            <div class="prize-badge bronze">3rd Place</div>
+            <div class="prize-icon-wrapper bronze">
+              <div class="prize-icon-inner">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#bronze-gradient)" stroke-width="2">
+                  <defs>
+                    <linearGradient id="bronze-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#d97706"/>
+                      <stop offset="100%" style="stop-color:#92400e"/>
+                    </linearGradient>
+                  </defs>
+                  <circle cx="12" cy="8" r="7"></circle>
+                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                </svg>
+              </div>
+            </div>
+            <h3 class="prize-amount">₹20,000</h3>
+            <p class="prize-title">Third Prize</p>
+            <ul class="prize-perks">
+              <li><span class="perk-dot"></span>Cash Prize</li>
+              <li><span class="perk-dot"></span>Appreciations</li>
+              <li><span class="perk-dot"></span>Goodies & Swag</li>
+              <li><span class="perk-dot"></span>Certificate of Excellence</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="additional-prizes">
+        <div class="additional-prize-card">
+          <div class="additional-prize-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="8" width="18" height="4" rx="1"></rect>
+              <path d="M12 8v13"></path>
+              <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path>
+              <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"></path>
+            </svg>
+          </div>
+          <h4>Best Circuit Design</h4>
+          <p>For exceptional hardware layout</p>
+        </div>
+        <div class="additional-prize-card">
+          <div class="additional-prize-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+          </div>
+          <h4>Best Embedded System</h4>
+          <p>Most efficient and robust implementation</p>
+        </div>
+        <div class="additional-prize-card">
+          <div class="additional-prize-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <h4>All Participants</h4>
+          <p>Certificates for everyone</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sponsors" class="sponsors-section section-animate">
+    <div class="tech-grid-bg opacity-30"></div>
+    <div class="sponsors-bg"></div>
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Our <span class="neon-text">Sponsors</span></h2>
+        <p class="section-subtitle">Powered by industry leaders who believe in nurturing innovation</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="sponsor-tier">
+        <h3 class="tier-title">TITLE SPONSOR</h3>
+        <div class="tier-logos title">
+          <div class="sponsor-card title">
+            <img src="https://via.placeholder.com/200x80/0a0a0f/00d4ff?text=TechCorp" alt="TechCorp">
+          </div>
+        </div>
+      </div>
+      <div class="sponsor-tier">
+        <h3 class="tier-title">GOLD SPONSORS</h3>
+        <div class="tier-logos gold">
+          <div class="sponsor-card gold">
+            <img src="https://via.placeholder.com/150x60/0a0a0f/8b5cf6?text=InnovateTech" alt="InnovateTech">
+          </div>
+          <div class="sponsor-card gold">
+            <img src="https://via.placeholder.com/150x60/0a0a0f/8b5cf6?text=CloudFirst" alt="CloudFirst">
+          </div>
+          <div class="sponsor-card gold">
+            <img src="https://via.placeholder.com/150x60/0a0a0f/8b5cf6?text=DataFlow" alt="DataFlow">
+          </div>
+        </div>
+      </div>
+      <div class="sponsor-tier">
+        <h3 class="tier-title">COMMUNITY PARTNERS</h3>
+        <div class="tier-logos community">
+          <div class="sponsor-card community">
+            <img src="https://via.placeholder.com/120x50/0a0a0f/6b7280?text=DevCommunity" alt="DevCommunity">
+          </div>
+          <div class="sponsor-card community">
+            <img src="https://via.placeholder.com/120x50/0a0a0f/6b7280?text=CodeHub" alt="CodeHub">
+          </div>
+          <div class="sponsor-card community">
+            <img src="https://via.placeholder.com/120x50/0a0a0f/6b7280?text=TechStartup" alt="TechStartup">
+          </div>
+          <div class="sponsor-card community">
+            <img src="https://via.placeholder.com/120x50/0a0a0f/6b7280?text=HackersUnited" alt="HackersUnited">
+          </div>
+        </div>
+      </div>
+      <div class="sponsor-cta">
+        <p>Interested in sponsoring AVATAAR?</p>
+        <a href="mailto:sponsors@avataar.edu">Contact us at sponsors@avataar.edu</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faqs" class="faq-section section-animate">
+    <div class="faq-bg"></div>
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Frequently Asked <span class="neon-text-purple">Questions</span></h2>
+        <p class="section-subtitle">Got questions? We've got answers. Can't find what you're looking for? Contact us!</p>
+        <div class="section-divider purple"></div>
+      </div>
+      <div class="faq-accordion">
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span>Who can participate in AVATAAR?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-content">
+            <p>AVATAAR is open to all college students across India. Whether you're a fresher or a final year student, from any branch or discipline, you're welcome to participate. Both undergraduate and postgraduate students can join.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span>What is the team size?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-content">
+            <p>Teams can have 4-5 members. Solo participation is not allowed.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span>Is the hackathon online or offline?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-content">
+            <p>AVATAAR is a fully offline hackathon. All participants must be present at the venue for the entire duration (24 hours). Accommodation and meals will be provided.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span>Is there a registration fee?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-content">
+            <p>Yes, there is a nominal registration fee of ₹250 per participant to cover food, accommodation, and event materials. This is non-refundable but can be transferred if you find a replacement.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span>What should I bring to the hackathon?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-content">
+            <p>Bring your laptop, charger, any hardware you might need for your project, a valid college ID, and personal essentials. We'll provide power strips, internet, and work areas.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span>Will certificates be provided?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-content">
+            <p>Yes! All participants will receive participation certificates. Winners and runners-up will receive special certificates of achievement.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span>Can I work on a pre-existing project?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-content">
+            <p>No. All projects must be started from scratch at the hackathon. You can come with ideas and research.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span>What technologies can I use?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-content">
+            <p>You can use any programming language or technology. There are no restrictions. We encourage you to use technologies that best fit your project requirements.(No AI)</p>
+          </div>
+        </div>
+      </div>
+      <div class="faq-contact">
+        <p>Still have questions?</p>
+        <a href="mailto:contact@avataar.edu">Reach out to us at contact@avataar.edu</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="register" class="register-section section-animate">
+    <div class="register-bg"></div>
+    <div class="register-radial"></div>
+    <div class="container">
+      <div class="register-wrapper">
+        <div class="register-glow"></div>
+        <div class="register-card">
+          <h2 class="section-title">Ready to <span class="neon-text">Innovate</span>?</h2>
+          <p class="register-subtitle">Don't miss your chance to be part of the biggest hackathon of the year. Register now and transform your ideas into reality!</p>
+          <div class="register-details">
+            <div class="register-detail">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>Registration closes: February 25, 2026</span>
+            </div>
+            <div class="register-detail">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>Limited spots available</span>
+            </div>
+          </div>
+          <button class="btn btn-neon btn-xl" onclick="window.open('https://forms.google.com/your-registration-form', '_blank')">
+            Register Now
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </button>
+          <p class="register-fee">Registration fee: ₹250 per participant</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-glow"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand" style="grid-column: span 2;">
+          <h3 class="tier-title" style="text-align: left; margin-bottom: 1rem;">Organizing Team</h3>
+          
+          <div class="team-scroll-container">
+            <div class="team-scroll-track">
+              <div class="team-member-card">
+                <img src="./images/principal.png" alt="Member 1" class="team-member-img">
+                <span class="team-member-name">Dr. K.C. Manjunath
+                </br>Principal
+                </span>
+                
+              </div>
+              <div class="team-member-card">
+                <img src="./images/vice_principal.png" alt="Member 2" class="team-member-img">
+                <span class="team-member-name">Dr. Likith kumar M V
+                    </br>Vice Principal
+                </span>
+              </div>
+              <div class="team-member-card">
+                <img src="./images/chief_IO.png" alt="Member 3" class="team-member-img">
+                <span class="team-member-name">Dr. Rohini padmanabhan
+                    </br>Former Principal
+                </span>
+              </div>
+              <div class="team-member-card">
+                <img src="./images/hod.png" alt="Member 4" class="team-member-img">
+                <span class="team-member-name">Dr. Rajalekshmi Kishore
+                    </br>HOD
+                </span>
+              </div>
+              <div class="team-member-card">
+                <img src="./images/faculty_coordinator.png" alt="Member 5" class="team-member-img">
+                <span class="team-member-name">Dr. Ashok K
+                    </br>Faculty Coordinator
+                </span>
+              </div>
+              
+              
+            </div>
+          </div>
+          </div>
+        
+        <div class="footer-links-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><button onclick="scrollToSection('#home')">Home</button></li>
+            <li><button onclick="scrollToSection('#about')">About</button></li>
+            <li><button onclick="scrollToSection('#tracks')">Tracks</button></li>
+            <li><button onclick="scrollToSection('#schedule')">Schedule</button></li>
+            <li><button onclick="scrollToSection('#prizes')">Prizes</button></li>
+            <li><button onclick="scrollToSection('#faqs')">FAQs</button></li>
+          </ul>
+        </div>
+        
+        <div class="footer-contact-section">
+          <h3>Contact Us</h3>
+          <ul class="footer-contact">
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>Department of Electronics and Communication<br>The National Institute of Engineering<br>Manandavadi Road, Mysuru, Karnataka 570008</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="mailto:echod@nie.ac.in">echod@nie.ac.in</a>
+            </li>
+          </ul>
+
+           <h3 style="margin-top: 2rem;">Student Coordinators</h3>
+            <div class="coordinators">
+            <div class="coordinator">
+              <p class="coordinator-name">Harsha B</p>
+              <div class="coordinator-contact">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <a>+91 7975619415</a>
+              </div>
+            </div>
+            <div class="coordinator">
+              <p class="coordinator-name">Shrilakshmi</p>
+              <div class="coordinator-contact">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <a>+91 7204703252</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2026 AVATAAR. Department of Electronics and Communication.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/script.js" defer></script>
+</body>
+</html>
