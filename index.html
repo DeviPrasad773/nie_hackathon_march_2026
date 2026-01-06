@@ -8,13 +8,19 @@
   <link rel="stylesheet" href="./css/style.css">
   
   <style>
-    /* Style for the new Header Logos - INCREASED SIZE */
+    /* ================= DEFAULT STYLES (Desktop) ================= */
     .header-logo-img {
-        height: 80px; /* Changed from 50px to 80px for bigger logos */
+        height: 80px;
         width: auto;
         object-fit: contain;
+        transition: height 0.3s ease;
     }
     
+    /* Footer Brand Span for Desktop */
+    .footer-brand-span {
+        grid-column: span 2;
+    }
+
     /* Team Scroller Styles */
     .team-scroll-container {
         width: 100%;
@@ -47,7 +53,7 @@
         height: 100px;
         border-radius: 50%;
         object-fit: cover;
-        border: 2px solid #00d4ff; /* Neon Cyan border */
+        border: 2px solid #00d4ff;
         margin-bottom: 0.5rem;
         background-color: #1a1a1a;
     }
@@ -59,15 +65,70 @@
         text-align: center;
     }
 
-    /* Animation Keyframes */
     @keyframes scroll {
         0% { transform: translateX(0); }
         100% { transform: translateX(-50%); } 
     }
 
-    /* Hover to pause */
     .team-scroll-track:hover {
         animation-play-state: paused;
+    }
+
+    /* ================= MOBILE RESPONSIVENESS FIXES ================= */
+    @media (max-width: 768px) {
+        /* HEADER FIXES */
+        .header .container {
+            padding: 0 0.5rem;
+        }
+        
+        .header-logo-img {
+            height: 40px; /* Smaller logos on phone */
+        }
+
+        .nav {
+            padding: 0.5rem 0;
+        }
+
+        /* Hide the Register button in header on mobile (it's in the menu) */
+        .nav .nav-register {
+            display: none;
+        }
+
+        /* Hide AVATAAR text on mobile to save space */
+        .logo-text {
+            display: none !important;
+        }
+
+        /* Adjust gap between elements */
+        .nav > div {
+            gap: 0.5rem !important;
+        }
+
+        /* FOOTER FIXES */
+        .footer-grid {
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            gap: 2rem;
+        }
+
+        .footer-brand-span {
+            grid-column: auto; /* Reset column span */
+            width: 100%;
+        }
+
+        .footer-links-section, 
+        .footer-contact-section,
+        .footer-coordinators-section {
+            text-align: center; /* Center align text on mobile */
+        }
+
+        .footer-contact li {
+            justify-content: center;
+        }
+        
+        .coordinators {
+            align-items: center;
+        }
     }
   </style>
 </head>
@@ -148,7 +209,7 @@
         <h1 class="hero-title animate-fade-in delay-100">
           <span class="neon-text">AVATAAR</span>
         </h1>
-        <p class="hero-tagline animate-fade-in delay-200">"Innovate Today, Shape Future"</p>
+        <p class="hero-tagline animate-fade-in delay-200">"Innovate Today, Shape Tomorrow"</p>
         <div class="hero-details animate-fade-in delay-300">
           <span class="detail-item">
             <span class="detail-dot"></span>
@@ -833,7 +894,7 @@
     <div class="footer-glow"></div>
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-brand" style="grid-column: span 2;">
+        <div class="footer-brand footer-brand-span">
           <h3 class="tier-title" style="text-align: left; margin-bottom: 1rem;">Organizing Team</h3>
           
           <div class="team-scroll-container">
@@ -938,5 +999,4 @@
 
   <script src="./js/script.js" defer></script>
 </body>
-
 </html>
