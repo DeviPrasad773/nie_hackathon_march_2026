@@ -28,14 +28,19 @@
         position: relative;
     }
 
+    /* Helper class for logos inside the top bar (Hidden on Desktop by default) */
+    .mobile-top-logo {
+        display: none; 
+    }
+
     /* UPDATED: Logos fixed placement */
     .header-logo-img {
-        height: 90px; /* Slightly reduced for better fit */
+        height: 90px;
         width: auto;
         object-fit: contain;
         transition: height 0.3s ease;
         filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
-        margin-top: 0; /* CHANGED: Removed negative margin to prevent overlap */
+        margin-top: 0;
     }
     
     /* Footer Brand Span for Desktop */
@@ -56,9 +61,9 @@
     
     .team-scroll-track {
         display: flex;
-        gap: 6rem; /* CHANGED: Increased gap significantly */
+        gap: 6rem;
         width: max-content;
-        animation: scroll 40s linear infinite; /* CHANGED: Slower speed */
+        animation: scroll 40s linear infinite;
     }
     
     .team-member-card {
@@ -200,32 +205,48 @@
 
     /* ================= MOBILE RESPONSIVENESS FIXES ================= */
     @media (max-width: 768px) {
-        /* HEADER FIXES */
+        
+        /* HEADER TOP BAR LAYOUT */
         .college-header-title {
-            font-size: 0.8rem; 
-            padding: 0.5rem 0.2rem;
-            line-height: 1.4;
+            display: flex !important; /* Enable Flexbox for alignment */
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem; /* Reduce text size to fit */
+            padding: 0.5rem 0.5rem;
+            line-height: 1.2;
+            gap: 10px;
+        }
+
+        /* Show the logos inside the top bar */
+        .mobile-top-logo {
+            display: block;
+            height: 40px; /* Size for mobile top bar */
+            width: auto;
+            background: rgba(255, 255, 255, 0.9); /* Small background to pop against black */
+            border-radius: 4px;
+            padding: 2px;
+        }
+
+        /* Hide the Original Big Logos from the Nav area */
+        .header-logo-img.desktop-only-logo {
+            display: none !important;
         }
 
         .header .container {
-            padding: 0 0.5rem;
+            padding: 0 1rem;
         }
         
-        /* Bigger logos on mobile */
-        .header-logo-img {
-            height: 75px; 
-            margin-top: 0; 
-        }
-
         .nav {
             padding: 0.5rem 0;
             align-items: center; 
+            justify-content: space-between !important;
         }
 
         .nav .nav-register {
             display: none;
         }
 
+        /* Hide text next to hackathon logo on mobile to save space */
         .logo-text {
             display: none !important;
         }
@@ -267,14 +288,19 @@
 </head>
 <body>
   <header id="header" class="header" style="height: auto; padding-top: 0;">
+    
     <div class="college-header-title">
-        The National Institute of Engineering, Mysuru
+        <img src="./images/nie.png" alt="College Logo" class="mobile-top-logo">
+        
+        <span>The National Institute of Engineering, Mysuru</span>
+        
+        <img src="./images/ece.jpg" alt="Dept Logo" class="mobile-top-logo">
     </div>
 
     <div class="container">
       <nav class="nav" style="justify-content: space-between; padding-top: 1rem; padding-bottom: 1rem; align-items: center;">
         
-        <img src="./images/nie.png" alt="College Logo" class="header-logo-img">
+        <img src="./images/nie.png" alt="College Logo" class="header-logo-img desktop-only-logo">
 
         <div style="display: flex; align-items: center; gap: 1rem;">
              <button onclick="scrollToSection('#home')" class="logo-btn">
@@ -298,7 +324,7 @@
             <button onclick="scrollToSection('#register')" class="btn btn-neon">Register Now</button>
             </div>
 
-            <img src="./images/ece.jpg" alt="Department Logo" class="header-logo-img">
+            <img src="./images/ece.jpg" alt="Department Logo" class="header-logo-img desktop-only-logo">
             
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
             <svg class="menu-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1004,7 +1030,7 @@
           </div>
 
           <ul class="footer-contact">
-             <li>
+              <li>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
