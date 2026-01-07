@@ -9,11 +9,33 @@
   
   <style>
     /* ================= DEFAULT STYLES (Desktop) ================= */
+    
+    /* NEW: College Title Header Style */
+    .college-header-title {
+        width: 100%;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 700;
+        font-size: 1.5rem;
+        padding: 0.5rem 0;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        z-index: 20;
+        position: relative;
+    }
+
+    /* UPDATED: Logos fixed placement */
     .header-logo-img {
-        height: 80px;
+        height: 90px; /* Slightly reduced for better fit */
         width: auto;
         object-fit: contain;
         transition: height 0.3s ease;
+        filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
+        margin-top: 0; /* CHANGED: Removed negative margin to prevent overlap */
     }
     
     /* Footer Brand Span for Desktop */
@@ -34,9 +56,9 @@
     
     .team-scroll-track {
         display: flex;
-        gap: 2rem;
+        gap: 6rem; /* CHANGED: Increased gap significantly */
         width: max-content;
-        animation: scroll 15s linear infinite;
+        animation: scroll 40s linear infinite; /* CHANGED: Slower speed */
     }
     
     .team-member-card {
@@ -65,6 +87,90 @@
         text-align: center;
     }
 
+    /* NEW STYLES FOR PRIZE POOL */
+    .total-pool-card {
+        background: rgba(10, 10, 15, 0.8);
+        border: 2px solid #fbbf24;
+        border-radius: 20px;
+        padding: 3rem;
+        text-align: center;
+        max-width: 700px;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+        box-shadow: 0 0 40px rgba(251, 191, 36, 0.2);
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+    }
+    
+    .total-pool-label {
+        color: #fbbf24;
+        font-family: 'Orbitron', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .total-pool-amount {
+        font-size: 5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #fbbf24 0%, #fff 50%, #d97706 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 0;
+        font-family: 'Orbitron', sans-serif;
+        line-height: 1.2;
+    }
+    
+    .total-pool-sub {
+        color: #9ca3af;
+        margin-top: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .cert-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(0, 212, 255, 0.3);
+        border-radius: 15px;
+        padding: 1.5rem 3rem;
+        text-align: center;
+        max-width: 400px;
+        margin: 2rem auto 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        box-shadow: 0 0 15px rgba(0, 212, 255, 0.1);
+    }
+
+    .contact-subheading {
+        color: #00d4ff;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 1.1rem;
+        margin-top: 0rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+        display: inline-block;
+        padding-bottom: 0.2rem;
+    }
+
+    .coordinator-box {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+    }
+
+    .coordinator-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #fff;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+    }
+
     @keyframes scroll {
         0% { transform: translateX(0); }
         100% { transform: translateX(-50%); } 
@@ -74,68 +180,99 @@
         animation-play-state: paused;
     }
 
+    /* ================= LAPTOP FIXES (Prevent Overlap) ================= */
+    @media (min-width: 769px) and (max-width: 1280px) {
+        .header-logo-img {
+            height: 80px; 
+            margin-top: 0;
+        }
+        .nav-links button {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.6rem;
+        }
+        .nav {
+            gap: 1rem;
+        }
+        .container {
+            padding: 0 1rem;
+        }
+    }
+
     /* ================= MOBILE RESPONSIVENESS FIXES ================= */
     @media (max-width: 768px) {
         /* HEADER FIXES */
+        .college-header-title {
+            font-size: 0.8rem; 
+            padding: 0.5rem 0.2rem;
+            line-height: 1.4;
+        }
+
         .header .container {
             padding: 0 0.5rem;
         }
         
+        /* Bigger logos on mobile */
         .header-logo-img {
-            height: 40px; /* Smaller logos on phone */
+            height: 75px; 
+            margin-top: 0; 
         }
 
         .nav {
             padding: 0.5rem 0;
+            align-items: center; 
         }
 
-        /* Hide the Register button in header on mobile (it's in the menu) */
         .nav .nav-register {
             display: none;
         }
 
-        /* Hide Logo text on mobile to save space */
         .logo-text {
             display: none !important;
         }
 
-        /* Adjust gap between elements */
         .nav > div {
             gap: 0.5rem !important;
+        }
+        
+        .total-pool-amount {
+            font-size: 3.5rem;
+        }
+        .total-pool-card {
+            padding: 2rem 1rem;
         }
 
         /* FOOTER FIXES */
         .footer-grid {
             display: flex;
-            flex-direction: column; /* Stack items vertically */
+            flex-direction: column; 
             gap: 2rem;
         }
 
         .footer-brand-span {
-            grid-column: auto; /* Reset column span */
+            grid-column: auto; 
             width: 100%;
         }
 
         .footer-links-section, 
         .footer-contact-section,
         .footer-coordinators-section {
-            text-align: center; /* Center align text on mobile */
+            text-align: center; 
         }
 
-        .footer-contact li {
+        .footer-contact li, .coordinator-item {
             justify-content: center;
-        }
-        
-        .coordinators {
-            align-items: center;
         }
     }
   </style>
 </head>
 <body>
-  <header id="header" class="header">
+  <header id="header" class="header" style="height: auto; padding-top: 0;">
+    <div class="college-header-title">
+        The National Institute of Engineering, Mysuru
+    </div>
+
     <div class="container">
-      <nav class="nav" style="justify-content: space-between;">
+      <nav class="nav" style="justify-content: space-between; padding-top: 1rem; padding-bottom: 1rem; align-items: center;">
         
         <img src="./images/nie.png" alt="College Logo" class="header-logo-img">
 
@@ -556,158 +693,31 @@
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Prizes & <span class="neon-text-purple">Rewards</span></h2>
-        <p class="section-subtitle">Win amazing prizes in each domain, gain industry exposure, and kickstart your career</p>
+        <p class="section-subtitle">Win big and gain industry recognition</p>
         <div class="section-divider purple"></div>
       </div>
       
-      <div class="prizes-grid">
-        
-        <div class="prize-card first">
-          <div class="prize-glow gold"></div>
-          <div class="prize-content">
-            <div class="prize-badge gold">Winner</div>
-            <div class="prize-icon-wrapper gold">
-              <div class="prize-icon-inner">
-                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#gold-gradient-1)" stroke-width="2">
-                    <defs>
-                        <linearGradient id="gold-gradient-1" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#fbbf24"/>
-                        <stop offset="100%" style="stop-color:#d97706"/>
-                        </linearGradient>
-                    </defs>
-                   <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                </svg>
-              </div>
-            </div>
-            <h3 class="prize-amount">₹20,000</h3>
-            <p class="prize-title">Healthcare</p>
-            <ul class="prize-perks">
-              <li><span class="perk-dot"></span>Cash Prize</li>
-              <li><span class="perk-dot"></span>Certificate of Merit</li>
-            </ul>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+          
+          <div class="total-pool-card">
+              <div class="prize-glow gold"></div>
+              <h3 class="total-pool-label">Total Prizepool</h3>
+              <h1 class="total-pool-amount">₹80,000</h1>
+              <p class="total-pool-sub"> </p>
           </div>
-        </div>
 
-        <div class="prize-card first">
-          <div class="prize-glow gold"></div>
-          <div class="prize-content">
-            <div class="prize-badge gold">Winner</div>
-            <div class="prize-icon-wrapper gold">
-              <div class="prize-icon-inner">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#gold-gradient-2)" stroke-width="2">
-                   <defs>
-                        <linearGradient id="gold-gradient-2" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#fbbf24"/>
-                        <stop offset="100%" style="stop-color:#d97706"/>
-                        </linearGradient>
-                    </defs>
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                </svg>
-              </div>
-            </div>
-            <h3 class="prize-amount">₹20,000</h3>
-            <p class="prize-title">Defence</p>
-            <ul class="prize-perks">
-              <li><span class="perk-dot"></span>Cash Prize</li>
-              <li><span class="perk-dot"></span>Certificate of Merit</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="prize-card first">
-          <div class="prize-glow gold"></div>
-          <div class="prize-content">
-            <div class="prize-badge gold">Winner</div>
-            <div class="prize-icon-wrapper gold">
-              <div class="prize-icon-inner">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#gold-gradient-3)" stroke-width="2">
-                    <defs>
-                        <linearGradient id="gold-gradient-3" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#fbbf24"/>
-                        <stop offset="100%" style="stop-color:#d97706"/>
-                        </linearGradient>
-                    </defs>
-                  <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
-                  <path d="M12 6v12"></path>
-                </svg>
-              </div>
-            </div>
-            <h3 class="prize-amount">₹20,000</h3>
-            <p class="prize-title">Sustainability</p>
-            <ul class="prize-perks">
-              <li><span class="perk-dot"></span>Cash Prize</li>
-              <li><span class="perk-dot"></span>Certificate of Merit</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="prize-card first">
-            <div class="prize-glow gold"></div>
-            <div class="prize-content">
-              <div class="prize-badge gold">Winner</div>
-              <div class="prize-icon-wrapper gold">
-                <div class="prize-icon-inner">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#gold-gradient-4)" stroke-width="2">
-                      <defs>
-                          <linearGradient id="gold-gradient-4" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" style="stop-color:#fbbf24"/>
-                          <stop offset="100%" style="stop-color:#d97706"/>
-                          </linearGradient>
-                      </defs>
-                    <path d="M12 2a10 10 0 1 0 10 10"></path>
-                    <path d="M12 12l8-8"></path>
-                  </svg>
-                </div>
-              </div>
-              <h3 class="prize-amount">₹20,000</h3>
-              <p class="prize-title">Agriculture</p>
-              <ul class="prize-perks">
-                <li><span class="perk-dot"></span>Cash Prize</li>
-                <li><span class="perk-dot"></span>Certificate of Merit</li>
-              </ul>
-            </div>
+          <div class="cert-card">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              <h4 style="margin: 0; color: #fff; font-family: 'Orbitron', sans-serif;">Participation Certificates for All Teams</h4>
           </div>
 
       </div>
-
-      <div class="additional-prizes">
-        <div class="additional-prize-card">
-          <div class="additional-prize-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="8" width="18" height="4" rx="1"></rect>
-              <path d="M12 8v13"></path>
-              <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path>
-              <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"></path>
-            </svg>
-          </div>
-          <h4>Best Circuit Design</h4>
-          <p>For exceptional hardware layout</p>
-        </div>
-        <div class="additional-prize-card">
-          <div class="additional-prize-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-            </svg>
-          </div>
-          <h4>Best Embedded System</h4>
-          <p>Most efficient and robust implementation</p>
-        </div>
-        <div class="additional-prize-card">
-          <div class="additional-prize-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line>
-              <line x1="16" y1="17" x2="8" y2="17"></line>
-              <polyline points="10 9 9 9 8 9"></polyline>
-            </svg>
-          </div>
-          <h4>All Participants</h4>
-          <p>Certificates for everyone</p>
-        </div>
-      </div>
-    </div>
   </section>
 
   <section id="sponsors" class="sponsors-section section-animate">
@@ -758,10 +768,6 @@
           </div>
         </div>
       </div>
-      <div class="sponsor-cta">
-        <p>Interested in sponsoring Hack4Impact India?</p>
-        <a href="mailto:sponsors@hack4impactindia.edu">Contact us at sponsors@hack4impactindia.edu</a>
-      </div>
     </div>
   </section>
 
@@ -806,7 +812,7 @@
             </svg>
           </button>
           <div class="faq-content">
-            <p>Teams can have 4-5 members. Solo participation is not allowed.</p>
+            <p>Teams can have 3-5 members. Solo participation is not allowed.</p>
           </div>
         </div>
         <div class="faq-item">
@@ -878,48 +884,7 @@
       </div>
       <div class="faq-contact">
         <p>Still have questions?</p>
-        <a href="mailto:contact@hack4impactindia.edu">Reach out to us at contact@hack4impactindia.edu</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="register" class="register-section section-animate">
-    <div class="register-bg"></div>
-    <div class="register-radial"></div>
-    <div class="container">
-      <div class="register-wrapper">
-        <div class="register-glow"></div>
-        <div class="register-card">
-          <h2 class="section-title">Ready to <span class="neon-text">Innovate</span>?</h2>
-          <p class="register-subtitle">Don't miss your chance to be part of the biggest hackathon of the year. Register now and transform your ideas into reality!</p>
-          <div class="register-details">
-            <div class="register-detail">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-              <span>Registration closes: February 25, 2026</span>
-            </div>
-            <div class="register-detail">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-              <span>Limited spots available</span>
-            </div>
-          </div>
-          <button class="btn btn-neon btn-xl" onclick="window.open('https://forms.google.com/your-registration-form', '_blank')">
-            Register Now
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-          </button>
-          <p class="register-fee">Registration fee: ₹250 per participant</p>
-        </div>
+        <a >Please contact us using the information at the bottom of the page. </a>
       </div>
     </div>
   </section>
@@ -949,19 +914,20 @@
               <div class="team-member-card">
                 <img src="./images/chief_IO.png" alt="Member 3" class="team-member-img">
                 <span class="team-member-name">Dr. Rohini padmanabhan
-                    </br>Former Principal
+                    </br>Chief Patron and Advisor
                 </span>
               </div>
               <div class="team-member-card">
                 <img src="./images/hod.png" alt="Member 4" class="team-member-img">
                 <span class="team-member-name">Dr. Rajalekshmi Kishore
-                    </br>HOD
+                    </br>HOD-ECE
                 </span>
               </div>
               <div class="team-member-card">
                 <img src="./images/faculty_coordinator.png" alt="Member 5" class="team-member-img">
                 <span class="team-member-name">Dr. Ashok K
-                    </br>Faculty Coordinator
+                 </br>Associate Professor,ECE    
+                </br>Faculty Coordinator
                 </span>
               </div>
               
@@ -984,7 +950,28 @@
         
         <div class="footer-contact-section">
           <h3>Contact Us</h3>
+          
+          <h4 class="contact-subheading">Student Coordinators</h4>
+          <div class="coordinator-box">
+             <div class="coordinator-item">
+                <span style="font-weight: bold; color: #fbbf24;">Harsha B:</span> 
+                <a href="tel:+917975619415" style="color: #fff; text-decoration: none;">+91 7975619415</a>
+             </div>
+             <div class="coordinator-item">
+                <span style="font-weight: bold; color: #fbbf24;">Shrilakshmi:</span> 
+                <a href="tel:+917204703252" style="color: #fff; text-decoration: none;">+91 7204703252</a>
+             </div>
+          </div>
+
           <ul class="footer-contact">
+             <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="mailto:hack4impactindia2026@gmail.com">hack4impactindia2026@gmail.com</a>
+            </li>
+            
             <li>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
@@ -992,36 +979,8 @@
               </svg>
               <span>Department of Electronics and Communication<br>The National Institute of Engineering<br>Manandavadi Road, Mysuru, Karnataka 570008</span>
             </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              <a href="mailto:echod@nie.ac.in">echod@nie.ac.in</a>
-            </li>
           </ul>
 
-           <h3 style="margin-top: 2rem;">Student Coordinators</h3>
-            <div class="coordinators">
-            <div class="coordinator">
-              <p class="coordinator-name">Harsha B</p>
-              <div class="coordinator-contact">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
-                <a>+91 7975619415</a>
-              </div>
-            </div>
-            <div class="coordinator">
-              <p class="coordinator-name">Shrilakshmi</p>
-              <div class="coordinator-contact">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
-                <a>+91 7204703252</a>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       
