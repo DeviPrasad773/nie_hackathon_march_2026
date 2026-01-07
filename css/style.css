@@ -416,6 +416,7 @@ img {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding-top: 160px;
 }
 
 .hero-bg-gradient {
@@ -2002,4 +2003,5 @@ section {
 /* ==================== OPACITY UTILITY ==================== */
 .opacity-30 {
   opacity: 0.3;
+
 }
