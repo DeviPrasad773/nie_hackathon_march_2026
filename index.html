@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hack4Impact India - National Level Hackathon 2025</title>
-  <meta name="description" content="Hack4Impact India is a 24-hour national level hackathon bringing together innovators from across India.">
+  <title>NavaNIEti - National Level Hackathon 2026</title>
+  <meta name="description" content="NavaNIEti is a 24-hour national level hackathon bringing together innovators from across India.">
   <link rel="stylesheet" href="./css/style.css">
   
   <style>
@@ -18,19 +18,17 @@
         font-family: 'Orbitron', sans-serif;
         font-weight: 700;
         font-size: 1.5rem;
-        padding: 0.5rem 2rem; /* Added horizontal padding */
+        padding: 0.5rem 2rem;
         letter-spacing: 1px;
         text-transform: uppercase;
         border-bottom: 1px solid rgba(0, 212, 255, 0.3);
         text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
         z-index: 20;
         position: relative;
-        
-        /* Flexbox to align logos and text */
         display: flex;
         justify-content: space-between;
         align-items: center;
-        box-sizing: border-box; /* Ensure padding doesn't overflow width */
+        box-sizing: border-box;
     }
 
     /* Top Bar Logos */
@@ -44,7 +42,6 @@
         filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
     }
     
-    /* Footer Brand Span for Desktop */
     .footer-brand-span {
         grid-column: span 2;
     }
@@ -186,6 +183,94 @@
         animation-play-state: paused;
     }
 
+    /* ================= TRACKS EXPANSION STYLES ================= */
+    .track-card {
+        cursor: pointer;
+        transition: all 0.3s ease;
+        height: auto; /* Allow growth */
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Updated Prompt Arrow Animation */
+    .track-click-prompt {
+        margin-top: 1rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #00d4ff;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .track-arrow-anim {
+        margin-top: 5px;
+        animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+        40% {transform: translateY(-5px);}
+        60% {transform: translateY(-3px);}
+    }
+
+    .track-problems-list {
+        display: none;
+        margin-top: 1.5rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 1rem;
+        text-align: left;
+        animation: fadeIn 0.5s ease;
+    }
+
+    .track-problems-list ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .track-problems-list li {
+        color: #d1d5db;
+        margin-bottom: 0.8rem;
+        font-size: 0.9rem;
+        padding-left: 1.2rem;
+        position: relative;
+    }
+
+    .track-problems-list li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: #00d4ff;
+    }
+
+    .track-card.active {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: #00d4ff;
+        transform: translateY(-5px);
+    }
+
+    .track-card.active .track-click-prompt {
+        display: none; /* Hide the prompt when open */
+    }
+
+    .track-card.active .track-problems-list {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+
+    /* ================= OVERLAP FIX FOR HERO SECTION ================= */
+    /* Shifts the hero section down so the logo/nav doesn't overlap content */
+    .hero-section {
+        padding-top: 150px !important; /* Force spacing from top */
+    }
+
     /* ================= LAPTOP FIXES (Prevent Overlap) ================= */
     @media (min-width: 769px) and (max-width: 1280px) {
         .nav-links button {
@@ -246,6 +331,11 @@
             padding: 2rem 1rem;
         }
 
+        /* Hero Section Shift for Mobile */
+        .hero-section {
+            padding-top: 160px !important; /* More space for mobile stacked header */
+        }
+
         /* FOOTER FIXES */
         .footer-grid {
             display: flex;
@@ -286,8 +376,8 @@
         
         <div style="display: flex; align-items: center; gap: 1rem;">
              <button onclick="scrollToSection('#home')" class="logo-btn">
-            <img src="./images/logo.png" alt="Hack4Impact Logo" class="logo-img">
-            <span class="logo-text neon-text">Hack4Impact India</span>
+            <img src="./images/logo2.png" alt="NavaNIEti Logo" class="logo-img">
+            <span class="logo-text neon-text">NavaNIEti</span>
             </button>
             
             <div class="nav-links">
@@ -296,6 +386,7 @@
             <button onclick="scrollToSection('#tracks')" class="nav-link">Tracks</button>
             <button onclick="scrollToSection('#schedule')" class="nav-link">Schedule</button>
             <button onclick="scrollToSection('#prizes')" class="nav-link">Prizes</button>
+            <button onclick="scrollToSection('#register')" class="nav-link">Register</button>
             <button onclick="scrollToSection('#sponsors')" class="nav-link">Sponsors</button>
             <button onclick="scrollToSection('#faqs')" class="nav-link">FAQs</button>
             </div>
@@ -350,7 +441,7 @@
           <span>National Level Hackathon</span>
         </div>
         <h1 class="hero-title animate-fade-in delay-100">
-          <span class="neon-text">Hack4Impact India</span>
+          <span class="neon-text">NavaNIEti</span>
         </h1>
         <p class="hero-tagline animate-fade-in delay-200">"Innovate Today, Shape Tomorrow"</p>
         <div class="hero-details animate-fade-in delay-300">
@@ -407,14 +498,14 @@
     <div class="section-line"></div>
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">About <span class="neon-text">Hack4Impact India</span></h2>
+        <h2 class="section-title">About <span class="neon-text">NavaNIEti</span></h2>
         <div class="section-divider"></div>
       </div>
       <div class="about-content">
         <div class="about-text">
-          <p><span class="highlight">Hack4Impact India</span> is a 24-hour national level hackathon that brings together innovative minds from across the country to solve real-world challenges through technology and creativity.</p>
+          <p><span class="highlight">NavaNIEti</span> is a 24-hour national level hackathon that brings together innovative minds from across the country to solve real-world challenges through technology and creativity.</p>
           <p>The hackathon features four focused tracks — <strong>Defence</strong>, <strong>Agriculture</strong>, <strong>Sustainability</strong>, and <strong>Healthcare</strong> — encouraging participants to develop impactful solutions in critical sectors that shape the future.</p>
-          <p>Open to all students, Hack4Impact India provides a collaborative environment to ideate, build, and present meaningful projects. Join us to innovate, compete, and create solutions that make a real difference.</p>
+          <p>Open to all students, NavaNIEti provides a collaborative environment to ideate, build, and present meaningful projects. Join us to innovate, compete, and create solutions that make a real difference.</p>
         </div>
         
         <div class="features-grid">
@@ -428,7 +519,7 @@
               </svg>
             </div>
             <h3>Open to All Branches</h3>
-            <p>Students from any college, any branch, and any year can participate.</p>
+            <p>Students from any engineering college, any branch, and any year can participate.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
@@ -476,11 +567,12 @@
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Hackathon <span class="neon-text-purple">Tracks</span></h2>
-        <p class="section-subtitle">Develop hardware and embedded solutions using industry-standard EDA tools and ECE technologies</p>
+        <p class="section-subtitle">Develop hardware and embedded solutions across emerging technology domains.</p>
         <div class="section-divider purple"></div>
       </div>
       <div class="tracks-grid">
-        <div class="track-card">
+        
+        <div class="track-card" onclick="toggleTrack(this)">
           <div class="track-glow"></div>
           <div class="track-content">
             <div class="track-animated-border"></div>
@@ -491,11 +583,30 @@
                 </svg>
               </div>
               <h3>Health Sector</h3>
-              <p>Design low-power bio-medical sensors and hardware systems for patient monitoring using circuit design and simulation tools.</p>
+              <div class="track-click-prompt">
+                  <span>View Problem Statements</span>
+                  <div class="track-arrow-anim">
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                     </svg>
+                  </div>
+              </div>
+              
+              <div class="track-problems-list">
+                  <h4 style="color:#00d4ff; margin-bottom:0.5rem;">Problem Statements:</h4>
+                  <ul>
+                      <li>Design a low-cost, wearable IoT device for real-time cardiac monitoring and anomaly detection.</li>
+                      <li>Develop a non-invasive blood glucose monitoring system using infrared or optical sensors.</li>
+                      <li>Create a smart pill dispenser with adherence tracking and caregiver alerts for elderly patients.</li>
+                      <li>Build a portable telemedicine kit for rural areas capable of basic vital sign diagnosis.</li>
+                      <li>Design a fall detection and emergency alert system using accelerometer and gyroscope sensors.</li>
+                  </ul>
+              </div>
             </div>
           </div>
         </div>
-        <div class="track-card">
+
+        <div class="track-card" onclick="toggleTrack(this)">
           <div class="track-glow"></div>
           <div class="track-content">
             <div class="track-animated-border"></div>
@@ -506,11 +617,30 @@
                 </svg>
               </div>
               <h3>Defence</h3>
-              <p>Build secure communication hardware, radar signal processing units, and rugged embedded systems.</p>
+              <div class="track-click-prompt">
+                  <span>View Problem Statements</span>
+                  <div class="track-arrow-anim">
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                     </svg>
+                  </div>
+              </div>
+
+              <div class="track-problems-list">
+                  <h4 style="color:#00d4ff; margin-bottom:0.5rem;">Problem Statements:</h4>
+                  <ul>
+                      <li>Develop an encrypted LoRa-based communication system for off-grid tactical messaging.</li>
+                      <li>Design an autonomous surveillance drone with object detection and night vision capabilities.</li>
+                      <li>Create a border intrusion detection system using seismic and PIR sensors.</li>
+                      <li>Build a soldier health monitoring system integrated into a combat vest.</li>
+                      <li>Design a jamming detection and frequency hopping module for secure radio links.</li>
+                  </ul>
+              </div>
             </div>
           </div>
         </div>
-        <div class="track-card">
+
+        <div class="track-card" onclick="toggleTrack(this)">
           <div class="track-glow"></div>
           <div class="track-content">
             <div class="track-animated-border"></div>
@@ -527,11 +657,30 @@
                 </svg>
               </div>
               <h3>Sustainability</h3>
-              <p>Create energy-efficient circuits and power management systems for green electronics and smart grids.</p>
+              <div class="track-click-prompt">
+                  <span>View Problem Statements</span>
+                  <div class="track-arrow-anim">
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                     </svg>
+                  </div>
+              </div>
+
+              <div class="track-problems-list">
+                  <h4 style="color:#00d4ff; margin-bottom:0.5rem;">Problem Statements:</h4>
+                  <ul>
+                      <li>Design a dual-axis solar tracker system to maximize photovoltaic cell efficiency.</li>
+                      <li>Develop a smart home energy meter that identifies power-hungry appliances.</li>
+                      <li>Create an IoT-based water quality monitoring buoy for lakes and rivers.</li>
+                      <li>Build a system for automated waste segregation using image processing.</li>
+                      <li>Design a piezoelectric footstep power generation system for public walkways.</li>
+                  </ul>
+              </div>
             </div>
           </div>
         </div>
-        <div class="track-card">
+
+        <div class="track-card" onclick="toggleTrack(this)">
           <div class="track-glow"></div>
           <div class="track-content">
             <div class="track-animated-border"></div>
@@ -546,10 +695,29 @@
                 </svg>
               </div>
               <h3>Agriculture</h3>
-              <p>Develop IoT-based soil monitoring sensors and automated hardware systems for smart farming.</p>
+              <div class="track-click-prompt">
+                  <span>View Problem Statements</span>
+                  <div class="track-arrow-anim">
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                     </svg>
+                  </div>
+              </div>
+
+              <div class="track-problems-list">
+                  <h4 style="color:#00d4ff; margin-bottom:0.5rem;">Problem Statements:</h4>
+                  <ul>
+                      <li>Develop a smart irrigation system based on real-time soil moisture and weather data.</li>
+                      <li>Design a drone attachment for targeted pesticide spraying on crops.</li>
+                      <li>Create an IoT system for monitoring greenhouse conditions (temperature, humidity, light).</li>
+                      <li>Build a computer vision system to detect early signs of crop diseases.</li>
+                      <li>Design a low-power wildlife repulsion system to protect farmlands.</li>
+                  </ul>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -727,6 +895,43 @@
       </div>
   </section>
 
+  <section id="register" class="register-section section-animate">
+    <div class="register-bg"></div>
+    <div class="register-radial"></div>
+    <div class="container">
+      <div class="register-wrapper">
+        <div class="register-glow"></div>
+        <div class="register-card">
+          <h2 class="section-title">Ready to <span class="neon-text">Innovate</span>?</h2>
+          <p class="register-subtitle">Don't miss your chance to be part of the biggest hackathon of the year. Register now and transform your ideas into reality!</p>
+          <div class="register-details">
+            <div class="register-detail">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>Registration closes: February 25, 2026</span>
+            </div>
+            </div>
+          <button class="btn btn-neon btn-xl" onclick="window.open('https://forms.google.com/your-registration-form', '_blank')">
+            Register Now
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </button>
+          
+          <p class="register-fee" style="font-size: 1.5rem; font-weight: bold; color: #fbbf24; margin-top: 1.5rem; margin-bottom: 0.5rem;">Registration fee: ₹250 per participant</p>
+          <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 0;">(Initial registration is free. Fee applies only to shortlisted teams)</p>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="sponsors" class="sponsors-section section-animate">
     <div class="tech-grid-bg opacity-30"></div>
     <div class="sponsors-bg"></div>
@@ -736,28 +941,7 @@
         <p class="section-subtitle">Powered by industry leaders who believe in nurturing innovation</p>
         <div class="section-divider"></div>
       </div>
-      <div class="sponsor-tier">
-        <h3 class="tier-title">TITLE SPONSOR</h3>
-        <div class="tier-logos title">
-          <div class="sponsor-card title">
-            <img src="https://via.placeholder.com/200x80/0a0a0f/00d4ff?text=TechCorp" alt="TechCorp">
-          </div>
-        </div>
-      </div>
-      <div class="sponsor-tier">
-        <h3 class="tier-title">GOLD SPONSORS</h3>
-        <div class="tier-logos gold">
-          <div class="sponsor-card gold">
-            <img src="https://via.placeholder.com/150x60/0a0a0f/8b5cf6?text=InnovateTech" alt="InnovateTech">
-          </div>
-          <div class="sponsor-card gold">
-            <img src="https://via.placeholder.com/150x60/0a0a0f/8b5cf6?text=CloudFirst" alt="CloudFirst">
-          </div>
-          <div class="sponsor-card gold">
-            <img src="https://via.placeholder.com/150x60/0a0a0f/8b5cf6?text=DataFlow" alt="DataFlow">
-          </div>
-        </div>
-      </div>
+      
       <div class="sponsor-tier">
         <h3 class="tier-title">COMMUNITY PARTNERS</h3>
         <div class="tier-logos community">
@@ -790,25 +974,25 @@
         
         <div class="faq-item">
             <button class="faq-trigger" onclick="toggleFaq(this)">
-              <span>Do I need to bring my own components/software?</span>
+              <span>Do I need to bring my own components?</span>
               <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </button>
             <div class="faq-content">
-              <p>Yes, please bring your own hardware components (microcontrollers, sensors, wires, etc.) required for your project. If you need specific licensed software tools or lab equipment (CRO, Power Supply, etc.), you must inform the coordinators at least 48 hours in advance so we can arrange them.</p>
+              <p>The organizing team will provide the necessary hardware components. Teams whose projects are shortlisted must submit a complete Bill of Materials (component list) upon selection to facilitate procurement and setup.</p>
             </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-trigger" onclick="toggleFaq(this)">
-            <span>Who can participate in Hack4Impact India?</span>
+            <span>Who can participate in NavaNIEti?</span>
             <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </button>
           <div class="faq-content">
-            <p>Hack4Impact India is open to all college students across India. Whether you're a fresher or a final year student, from any branch or discipline, you're welcome to participate.</p>
+            <p>NavaNIEti welcomes B.E. engineering students from all branches and all years. Please note that only hardware-based projects will be considered.</p>
           </div>
         </div>
         <div class="faq-item">
@@ -830,7 +1014,7 @@
             </svg>
           </button>
           <div class="faq-content">
-            <p>Hack4Impact India is a fully offline hackathon. All participants must be present at the venue for the entire duration (24 hours). Accommodation and meals will be provided.</p>
+            <p>NavaNIEti is a fully offline hackathon. All participants must be present at the venue for the entire duration (24 hours).</p>
           </div>
         </div>
         <div class="faq-item">
@@ -841,7 +1025,7 @@
             </svg>
           </button>
           <div class="faq-content">
-            <p>Yes, there is a nominal registration fee of ₹250 per participant to cover food, accommodation, and event materials. This is non-refundable but can be transferred if you find a replacement.</p>
+            <p>Registration is free for the initial application. Shortlisted participants will be required to pay a registration fee of ₹250 per person.</p>
           </div>
         </div>
         <div class="faq-item">
@@ -852,7 +1036,7 @@
             </svg>
           </button>
           <div class="faq-content">
-            <p>Bring your laptop, charger, any hardware you might need for your project, a valid college ID, and personal essentials. We'll provide power strips, internet, and work areas.</p>
+            <p>All participants are required to carry a valid college ID along with a government-issued ID for identity verification.</p>
           </div>
         </div>
         <div class="faq-item">
@@ -863,75 +1047,35 @@
             </svg>
           </button>
           <div class="faq-content">
-            <p>Yes! All participants will receive participation certificates. Winners and runners-up will receive special certificates of achievement.</p>
+            <p>Yes! All participants will receive participation certificates.</p>
           </div>
         </div>
         <div class="faq-item">
           <button class="faq-trigger" onclick="toggleFaq(this)">
-            <span>Can I work on a pre-existing project?</span>
+            <span>What will be provided to participants?</span>
             <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </button>
           <div class="faq-content">
-            <p>No. All projects must be started from scratch at the hackathon. You can come with ideas and research.</p>
+            <p>We will provide the required components for the problem statements, along with internet access and a dedicated workspace for all participants.</p>
           </div>
         </div>
         <div class="faq-item">
           <button class="faq-trigger" onclick="toggleFaq(this)">
-            <span>What technologies can I use?</span>
+            <span>What facilities will be available for participants?</span>
             <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </button>
           <div class="faq-content">
-            <p>You can use any programming language or technology. There are no restrictions. We encourage you to use technologies that best fit your project requirements.</p>
+            <p>Food and designated resting areas (such as lounge spaces or bean bags for short breaks) will be provided.</p>
           </div>
         </div>
       </div>
       <div class="faq-contact">
         <p>Still have questions?</p>
-        <a >Please contact us using the information at the bottom of the page. </a>
-      </div>
-    </div>
-  </section>
-  <section id="register" class="register-section section-animate">
-    <div class="register-bg"></div>
-    <div class="register-radial"></div>
-    <div class="container">
-      <div class="register-wrapper">
-        <div class="register-glow"></div>
-        <div class="register-card">
-          <h2 class="section-title">Ready to <span class="neon-text">Innovate</span>?</h2>
-          <p class="register-subtitle">Don't miss your chance to be part of the biggest hackathon of the year. Register now and transform your ideas into reality!</p>
-          <div class="register-details">
-            <div class="register-detail">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-              <span>Registration closes: February 25, 2026</span>
-            </div>
-            <div class="register-detail">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-              <span>Limited spots available</span>
-            </div>
-          </div>
-          <button class="btn btn-neon btn-xl" onclick="window.open('https://forms.google.com/your-registration-form', '_blank')">
-            Register Now
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-          </button>
-          <p class="register-fee">Registration fee: ₹250 per participant</p>
-        </div>
+        <a >Please contact Student Coordinators.</a>
       </div>
     </div>
   </section>
@@ -1016,7 +1160,7 @@
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
-              <a href="mailto:hack4impactindia2026@gmail.com">hack4impactindia2026@gmail.com</a>
+              <a href="mailto:navanieti2026@gmail.com">navanieti2026@gmail.com</a>
             </li>
             
             <li>
@@ -1032,14 +1176,18 @@
       </div>
       
       <div class="footer-bottom">
-        <p>© 2026 Hack4Impact India. Department of Electronics and Communication.</p>
+        <p>© 2026 NavaNIEti. Department of Electronics and Communication.</p>
       </div>
     </div>
   </footer>
 
   <script src="./js/script.js" defer></script>
+  <script>
+    // Inline script for Track Expansion to avoid editing external JS file
+    function toggleTrack(element) {
+        element.classList.toggle('active');
+        // The CSS handles the display block/none of the problems list based on the 'active' class
+    }
+  </script>
 </body>
 </html>
-
-
-
