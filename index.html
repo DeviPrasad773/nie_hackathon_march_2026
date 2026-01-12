@@ -17,7 +17,7 @@
         color: #fff;
         font-family: 'Orbitron', sans-serif;
         font-weight: 700;
-        font-size: 1.5rem;
+        /* Removed fixed font size to allow children to control size */
         padding: 0.5rem 2rem;
         letter-spacing: 1px;
         text-transform: uppercase;
@@ -31,9 +31,46 @@
         box-sizing: border-box;
     }
 
+    /* NEW STYLES FOR HEADER TEXT BLOCK */
+    .header-text-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-grow: 1;
+        padding: 0 1rem;
+    }
+
+    .header-main-title {
+        font-size: 1.2rem;
+        margin: 0;
+        color: #fff;
+        line-height: 1.2;
+    }
+
+    .header-sub-details {
+        font-size: 0.65rem;
+        font-family: sans-serif; /* Readable font for small details */
+        color: #ccc;
+        text-transform: none;
+        letter-spacing: 0.5px;
+        margin: 4px 0;
+        line-height: 1.3;
+        font-weight: normal;
+        text-shadow: none;
+    }
+
+    .header-dept-title {
+        font-size: 0.9rem;
+        color: #00d4ff;
+        margin-top: 2px;
+        line-height: 1.2;
+    }
+
     /* Top Bar Logos */
     .header-logo-top {
-        height: 60px; /* Desktop height */
+        height: 70px; /* Slightly larger for balance */
         width: auto;
         object-fit: contain;
         background: rgba(255, 255, 255, 0.9);
@@ -88,6 +125,100 @@
         font-family: 'Orbitron', sans-serif;
         font-size: 0.8rem;
         text-align: center;
+    }
+
+    /* ================= NOTABLE DATES SECTION STYLES ================= */
+    .dates-section {
+        position: relative;
+        padding: 4rem 0;
+        overflow: hidden;
+    }
+
+    .dates-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 800px;
+        margin: 3rem auto 0;
+        padding: 0 1rem;
+    }
+
+    .date-card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 1.5rem 2rem;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .date-card:hover {
+        transform: translateY(-5px);
+        border-color: #fbbf24; /* Yellow to match image accent */
+        box-shadow: 0 10px 30px rgba(251, 191, 36, 0.15);
+        background: rgba(255,255,255,0.08);
+    }
+
+    .date-icon-box {
+        background: rgba(251, 191, 36, 0.1);
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        border: 1px solid rgba(251, 191, 36, 0.3);
+        position: relative;
+    }
+    
+    .date-icon-box::after {
+        content: '';
+        position: absolute;
+        top: -5px; right: -5px;
+        width: 20px; height: 20px;
+        background: #fbbf24;
+        border-radius: 50%;
+        opacity: 0.5;
+        filter: blur(10px);
+    }
+
+    .date-content {
+        flex-grow: 1;
+        text-align: left;
+    }
+
+    .date-heading {
+        font-family: 'Orbitron', sans-serif;
+        color: #fbbf24; /* Yellow */
+        font-size: 1.2rem;
+        margin: 0 0 0.5rem 0;
+        letter-spacing: 1px;
+    }
+
+    .date-desc {
+        color: #e5e7eb;
+        font-size: 1rem;
+        margin: 0;
+        line-height: 1.5;
+    }
+    
+    .important-badge {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        background: rgba(251, 191, 36, 0.2);
+        color: #fbbf24;
+        font-size: 0.6rem;
+        padding: 2px 8px;
+        border-radius: 10px;
+        border: 1px solid rgba(251, 191, 36, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     /* NEW STYLES FOR PRIZE POOL */
@@ -268,7 +399,7 @@
     /* ================= OVERLAP FIX FOR HERO SECTION ================= */
     /* Shifts the hero section down so the logo/nav doesn't overlap content */
     .hero-section {
-        padding-top: 150px !important; /* Force spacing from top */
+        padding-top: 160px !important; /* Increased for taller header */
     }
 
     /* ================= LAPTOP FIXES (Prevent Overlap) ================= */
@@ -290,12 +421,23 @@
         
         /* HEADER TOP BAR LAYOUT */
         .college-header-title {
-            font-size: 0.75rem; /* Reduce text size to fit */
-            padding: 0.5rem 0.5rem;
-            line-height: 1.2;
-            gap: 10px;
+            padding: 0.5rem 0.2rem;
+            gap: 5px;
         }
         
+        /* Adjust text for mobile */
+        .header-main-title {
+            font-size: 0.75rem; 
+        }
+        
+        .header-sub-details {
+            display: none; /* Hide details on very small screens to save space, or reduce font size significantly */
+        }
+        
+        .header-dept-title {
+            font-size: 0.6rem;
+        }
+
         /* Reduce Logo Size for Mobile */
         .header-logo-top {
             height: 40px;
@@ -333,7 +475,7 @@
 
         /* Hero Section Shift for Mobile */
         .hero-section {
-            padding-top: 160px !important; /* More space for mobile stacked header */
+            padding-top: 180px !important; /* More space for mobile stacked header */
         }
 
         /* FOOTER FIXES */
@@ -366,7 +508,15 @@
     <div class="college-header-title">
         <img src="./images/nie.png" alt="College Logo" class="header-logo-top">
         
-        <span style="text-align: center;">The National Institute of Engineering, Mysuru</span>
+        <div class="header-text-container">
+            <h2 class="header-main-title">The National Institute of Engineering, Mysuru</h2>
+            <p class="header-sub-details">
+                (An Autonomous Institute under VTU, Belagavi)<br>
+                Recognized by AICTE, New Delhi | Accredited by NAAC, New Delhi
+            </p>
+            <div class="header-dept-title">Department of Electronics and Communication Engineering</div>
+            <p style="font-size: 0.7rem; margin: 0; color: #aaa;">Presents</p>
+        </div>
         
         <img src="./images/ece.jpg" alt="Dept Logo" class="header-logo-top">
     </div>
@@ -375,18 +525,19 @@
       <nav class="nav" style="justify-content: space-between; padding-top: 1rem; padding-bottom: 1rem; align-items: center;">
         
         <div style="display: flex; align-items: center; gap: 1rem;">
-             <button onclick="scrollToSection('#home')" class="logo-btn">
+              <button onclick="scrollToSection('#home')" class="logo-btn">
+            
             <span class="logo-text neon-text">NavaNIEti</span>
             </button>
             
             <div class="nav-links">
             <button onclick="scrollToSection('#home')" class="nav-link">Home</button>
+            <button onclick="scrollToSection('#sponsors')" class="nav-link">Sponsors</button>
             <button onclick="scrollToSection('#about')" class="nav-link">About</button>
             <button onclick="scrollToSection('#tracks')" class="nav-link">Tracks</button>
             <button onclick="scrollToSection('#schedule')" class="nav-link">Schedule</button>
             <button onclick="scrollToSection('#prizes')" class="nav-link">Prizes</button>
             <button onclick="scrollToSection('#register')" class="nav-link">Register</button>
-            <button onclick="scrollToSection('#sponsors')" class="nav-link">Sponsors</button>
             <button onclick="scrollToSection('#faqs')" class="nav-link">FAQs</button>
             </div>
         </div>
@@ -414,11 +565,11 @@
     <div id="mobile-menu" class="mobile-menu">
       <div class="container">
         <button onclick="scrollToSection('#home')" class="mobile-nav-link">Home</button>
+        <button onclick="scrollToSection('#sponsors')" class="mobile-nav-link">Sponsors</button>
         <button onclick="scrollToSection('#about')" class="mobile-nav-link">About</button>
         <button onclick="scrollToSection('#tracks')" class="mobile-nav-link">Tracks</button>
         <button onclick="scrollToSection('#schedule')" class="mobile-nav-link">Schedule</button>
         <button onclick="scrollToSection('#prizes')" class="mobile-nav-link">Prizes</button>
-        <button onclick="scrollToSection('#sponsors')" class="mobile-nav-link">Sponsors</button>
         <button onclick="scrollToSection('#faqs')" class="mobile-nav-link">FAQs</button>
         <button onclick="scrollToSection('#register')" class="btn btn-neon mobile-register-btn">Register Now</button>
       </div>
@@ -437,7 +588,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sparkles-icon">
             <path d="M12 3l1.912 5.813a2 2 0 001.275 1.275L21 12l-5.813 1.912a2 2 0 00-1.275 1.275L12 21l-1.912-5.813a2 2 0 00-1.275-1.275L3 12l5.813-1.912a2 2 0 001.275-1.275L12 3z"></path>
           </svg>
-          <span>National Level Hackathon</span>
+          <span style="color: #fbbf24; font-weight: 800; text-shadow: 0 0 15px rgba(251, 191, 36, 0.8); text-transform: uppercase; letter-spacing: 1.5px; font-size: 1.1rem; font-family: 'Orbitron', sans-serif;">National Level Hackathon</span>
         </div>
         <h1 class="hero-title animate-fade-in delay-100">
           <span class="neon-text">NavaNIEti</span>
@@ -446,11 +597,18 @@
         <div class="hero-details animate-fade-in delay-300">
           <span class="detail-item">
             <span class="detail-dot"></span>
-            March 1 – March 2, 2026
+            March 4 – March 5, 2026
           </span>
           <span class="detail-separator">|</span>
           <span>Department of Electronics and Communication</span>
         </div>
+
+        <div class="animate-fade-in delay-300" style="margin-top: 1rem; margin-bottom: 0.5rem;">
+            <p style="font-size: 1.1rem; color: #fbbf24; font-weight: 700; text-shadow: 0 0 10px rgba(251, 191, 36, 0.5); font-family: 'Orbitron', sans-serif;">
+                📍 Venue: The National Institute of Engineering, Mysuru
+            </p>
+        </div>
+        
         <div class="hero-cta animate-fade-in delay-400">
           <button onclick="scrollToSection('#register')" class="btn btn-neon btn-lg">Register Now</button>
           <button onclick="scrollToSection('#about')" class="btn btn-outline btn-lg">Learn More</button>
@@ -485,11 +643,41 @@
         </div>
       </div>
     </div>
-    <button onclick="scrollToSection('#about')" class="scroll-indicator" aria-label="Scroll down">
+    <button onclick="scrollToSection('#sponsors')" class="scroll-indicator" aria-label="Scroll down">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <polyline points="6 9 12 15 18 9"></polyline>
       </svg>
     </button>
+  </section>
+
+  <section id="sponsors" class="sponsors-section section-animate">
+    <div class="tech-grid-bg opacity-30"></div>
+    <div class="sponsors-bg"></div>
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Our <span class="neon-text">Sponsors</span></h2>
+        <p class="section-subtitle">Powered by industry leaders who believe in nurturing innovation</p>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="sponsor-tier">
+        <h3 class="tier-title">COMMUNITY PARTNERS</h3>
+        <div class="tier-logos community">
+          <div class="sponsor-card community">
+            <img src="https://via.placeholder.com/120x50/0a0a0f/6b7280?text=DevCommunity" alt="DevCommunity">
+          </div>
+          <div class="sponsor-card community">
+            <img src="https://via.placeholder.com/120x50/0a0a0f/6b7280?text=CodeHub" alt="CodeHub">
+          </div>
+          <div class="sponsor-card community">
+            <img src="https://via.placeholder.com/120x50/0a0a0f/6b7280?text=TechStartup" alt="TechStartup">
+          </div>
+          <div class="sponsor-card community">
+            <img src="https://via.placeholder.com/120x50/0a0a0f/6b7280?text=HackersUnited" alt="HackersUnited">
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="about" class="about-section section-animate">
@@ -503,7 +691,7 @@
       <div class="about-content">
         <div class="about-text">
           <p><span class="highlight">NavaNIEti</span> is a 24-hour national level hackathon that brings together innovative minds from across the country to solve real-world challenges through technology and creativity.</p>
-          <p>The hackathon features four focused tracks — <strong>Defence</strong>, <strong>Agriculture</strong>, <strong>Sustainability</strong>, and <strong>Healthcare</strong> — encouraging participants to develop impactful solutions in critical sectors that shape the future.</p>
+          <p>The hackathon features four focused tracks — <strong>Defence</strong>, <strong>Sustainability & Agriculture</strong>, <strong>Disaster Management</strong>, and <strong>Healthcare</strong> — encouraging participants to develop impactful solutions in critical sectors that shape the future.</p>
           <p>Open to all students, NavaNIEti provides a collaborative environment to ideate, build, and present meaningful projects. Join us to innovate, compete, and create solutions that make a real difference.</p>
         </div>
         
@@ -585,9 +773,9 @@
               <div class="track-click-prompt">
                   <span>View Problem Statements</span>
                   <div class="track-arrow-anim">
-                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                     </svg>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
                   </div>
               </div>
               
@@ -619,9 +807,9 @@
               <div class="track-click-prompt">
                   <span>View Problem Statements</span>
                   <div class="track-arrow-anim">
-                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                     </svg>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
                   </div>
               </div>
 
@@ -655,13 +843,13 @@
                   <path d="M9 17l-2-2"></path>
                 </svg>
               </div>
-              <h3>Sustainability</h3>
+              <h3>Sustainability & Agriculture</h3>
               <div class="track-click-prompt">
                   <span>View Problem Statements</span>
                   <div class="track-arrow-anim">
-                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                     </svg>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
                   </div>
               </div>
 
@@ -672,7 +860,10 @@
                       <li>Develop a smart home energy meter that identifies power-hungry appliances.</li>
                       <li>Create an IoT-based water quality monitoring buoy for lakes and rivers.</li>
                       <li>Build a system for automated waste segregation using image processing.</li>
-                      <li>Design a piezoelectric footstep power generation system for public walkways.</li>
+                      <li>Develop a smart irrigation system based on real-time soil moisture and weather data.</li>
+                      <li>Design a drone attachment for targeted pesticide spraying on crops.</li>
+                      <li>Create an IoT system for monitoring greenhouse conditions.</li>
+                      <li>Build a computer vision system to detect early signs of crop diseases.</li>
                   </ul>
               </div>
             </div>
@@ -684,33 +875,32 @@
           <div class="track-content">
             <div class="track-animated-border"></div>
             <div class="track-inner">
-              <div class="track-icon">
+              <div class="track-icon" style="color: #ff5722;">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 2a10 10 0 1 0 10 10"></path>
-                  <path d="M12 12V2"></path>
-                  <path d="M12 12l8-8"></path>
-                  <path d="M16 6h4"></path>
-                  <path d="M20 6v4"></path>
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                  <line x1="12" y1="9" x2="12" y2="13"></line>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
                 </svg>
               </div>
-              <h3>Agriculture</h3>
+              <h3>Disaster Management</h3>
               <div class="track-click-prompt">
                   <span>View Problem Statements</span>
                   <div class="track-arrow-anim">
-                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                     </svg>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
                   </div>
               </div>
 
               <div class="track-problems-list">
                   <h4 style="color:#00d4ff; margin-bottom:0.5rem;">Problem Statements:</h4>
                   <ul>
-                      <li>Develop a smart irrigation system based on real-time soil moisture and weather data.</li>
-                      <li>Design a drone attachment for targeted pesticide spraying on crops.</li>
-                      <li>Create an IoT system for monitoring greenhouse conditions (temperature, humidity, light).</li>
-                      <li>Build a computer vision system to detect early signs of crop diseases.</li>
-                      <li>Design a low-power wildlife repulsion system to protect farmlands.</li>
+                      <li>Real-time landslide detection and early warning system using soil sensors.</li>
+                      <li>IoT-based flood monitoring and alert system for riverbanks.</li>
+                      <li>Drone-based victim identification in debris using thermal imaging.</li>
+                      <li>Earthquake vibration sensor with automated gas/power cut-off mechanism.</li>
+                      <li>Forest fire detection system using distributed smoke and temperature sensors.</li>
+                      <li>Emergency communication network for disaster-struck areas without cellular coverage.</li>
                   </ul>
               </div>
             </div>
@@ -738,7 +928,7 @@
             <line x1="3" y1="10" x2="21" y2="10"></line>
           </svg>
           <span>Day 1</span>
-          <span class="day-date">March 1, 2026</span>
+          <span class="day-date">March 4, 2026</span>
         </button>
         <button class="day-tab" data-day="1" onclick="setActiveDay(1)">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -748,7 +938,7 @@
             <line x1="3" y1="10" x2="21" y2="10"></line>
           </svg>
           <span>Day 2</span>
-          <span class="day-date">March 2, 2026</span>
+          <span class="day-date">March 5, 2026</span>
         </button>
       </div>
       
@@ -930,36 +1120,75 @@
       </div>
     </div>
   </section>
+<section id="timeline-dates" class="dates-section section-animate">
+     <div class="tech-grid-bg opacity-30"></div>
+     <div class="container">
+         <div class="section-header">
+             <h2 class="section-title">Notable <span class="neon-text">Dates</span></h2>
+             <p class="section-subtitle">Mark your calendars for these important milestones</p>
+             <div class="section-divider"></div>
+         </div>
+         
+         <div class="dates-grid">
+             <div class="date-card">
+                 <div class="date-icon-box">
+                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                     </svg>
+                 </div>
+                 <div class="date-content">
+                     <h4 class="date-heading">Jan 15th - Feb 15th 2026</h4>
+                     <p class="date-desc">Registration and submission of abstract for phase 1</p>
+                 </div>
+                 <span class="important-badge">Deadline</span>
+             </div>
 
-  <section id="sponsors" class="sponsors-section section-animate">
-    <div class="tech-grid-bg opacity-30"></div>
-    <div class="sponsors-bg"></div>
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Our <span class="neon-text">Sponsors</span></h2>
-        <p class="section-subtitle">Powered by industry leaders who believe in nurturing innovation</p>
-        <div class="section-divider"></div>
-      </div>
-      
-      <div class="sponsor-tier">
-        <h3 class="tier-title">COMMUNITY PARTNERS</h3>
-        <div class="tier-logos community">
-          <div class="sponsor-card community">
-            <img src="https://via.placeholder.com/120x50/0a0a0f/6b7280?text=DevCommunity" alt="DevCommunity">
-          </div>
-          <div class="sponsor-card community">
-            <img src="https://via.placeholder.com/120x50/0a0a0f/6b7280?text=CodeHub" alt="CodeHub">
-          </div>
-          <div class="sponsor-card community">
-            <img src="https://via.placeholder.com/120x50/0a0a0f/6b7280?text=TechStartup" alt="TechStartup">
-          </div>
-          <div class="sponsor-card community">
-            <img src="https://via.placeholder.com/120x50/0a0a0f/6b7280?text=HackersUnited" alt="HackersUnited">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+             <div class="date-card">
+                 <div class="date-icon-box">
+                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                     </svg>
+                 </div>
+                 <div class="date-content">
+                     <h4 class="date-heading">21st Feb 2026</h4>
+                     <p class="date-desc">Shortlisting of Phase 1 submission</p>
+                 </div>
+             </div>
+
+             <div class="date-card">
+                 <div class="date-icon-box">
+                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="12" y1="18" x2="12" y2="12"></line>
+                        <line x1="9" y1="15" x2="15" y2="15"></line>
+                     </svg>
+                 </div>
+                 <div class="date-content">
+                     <h4 class="date-heading">25th Feb 2026</h4>
+                     <p class="date-desc">Registration of Phase 2</p>
+                 </div>
+             </div>
+
+             <div class="date-card" style="border-color: #fbbf24;">
+                 <div class="date-icon-box" style="background: rgba(251, 191, 36, 0.2); box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);">
+                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                     </svg>
+                 </div>
+                 <div class="date-content">
+                     <h4 class="date-heading" style="color:#fff;">4th - 5th March 2026</h4>
+                     <p class="date-desc" style="font-weight: bold; color:#fbbf24;">Final Event</p>
+                 </div>
+                 <span class="important-badge" style="background:#fbbf24; color:#000;">Main Event</span>
+             </div>
+         </div>
+     </div>
+</section>
 
   <section id="faqs" class="faq-section section-animate">
     <div class="faq-bg"></div>
@@ -979,8 +1208,10 @@
               </svg>
             </button>
             <div class="faq-content">
-              <p>The organizing team will provide the necessary hardware components. Teams whose projects are shortlisted must submit a complete Bill of Materials (component list) upon selection to facilitate procurement and setup.</p>
-            </div>
+          <p>
+The organizing team will provide hardware components worth up to <strong>₹4,000</strong>. Teams whose projects are shortlisted must submit a complete Bill of Materials (component list) upon selection. If your project requires additional components beyond this limit, you are welcome to bring your own. <strong>All components provided by the organizing team must be returned in proper working condition after the final evaluation.</strong>
+</p>
+ </div>
         </div>
 
         <div class="faq-item">
@@ -1190,6 +1421,3 @@
   </script>
 </body>
 </html>
-
-
-
