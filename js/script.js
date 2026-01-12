@@ -4,7 +4,7 @@
 
 // ==================== CONFIGURATION ====================
 // Change this date to set the hackathon start date
-const TARGET_DATE = new Date('2026-03-01T09:00:00');
+const TARGET_DATE = new Date('2026-03-04T09:00:00');
 
 // ==================== HEADER SCROLL EFFECT ====================
 const header = document.getElementById('header');
@@ -251,4 +251,5 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Trigger initial reveal check
   revealSections();
+
 });
