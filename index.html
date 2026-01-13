@@ -1097,15 +1097,27 @@
               </svg>
               <span>Registration closes: February 25, 2026</span>
             </div>
-            </div>
-          <button class="btn btn-neon btn-xl" onclick="window.open('register_link')">
-            Register Now
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-          </button>
+          </div>
+          
+          <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+              <button class="btn btn-neon btn-xl" onclick="window.open('register_link')">
+                Register Now
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+
+              <a href="./IDEA_Presentation_Format.pdf" download="NavaNIEti_Idea_Template.pdf" class="btn btn-outline" style="padding: 0.8rem 2rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Idea PPT Template
+              </a>
+          </div>
           
           <p class="register-fee" style="font-size: 1.5rem; font-weight: bold; color: #fbbf24; margin-top: 1.5rem; margin-bottom: 0.5rem;">Registration fee: ₹250 per participant</p>
           <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 0;">(Initial registration is free. Fee applies only to shortlisted teams)</p>
@@ -1113,7 +1125,7 @@
         </div>
       </div>
     </div>
-  </section>
+</section>
 <section id="timeline-dates" class="dates-section section-animate">
      <div class="tech-grid-bg opacity-30"></div>
      <div class="container">
@@ -1230,6 +1242,17 @@ The organizing team will provide hardware components worth up to <strong>₹4,00
             <p>Teams can have 3-5 members. Solo participation is not allowed.</p>
           </div>
         </div>
+        <div class="faq-item">
+  <button class="faq-trigger" onclick="toggleFaq(this)">
+    <span>Is there a specific format for the Idea submission?</span>
+    <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+  <div class="faq-content">
+    <p>Yes. You must use the provided <strong>IDEA_Presentation_Format</strong> template for your submission. The PPT should be saved as a <strong>PDF</strong> before uploading. Submissions in other formats (Word, Doc, etc.) or changes to the required pointers will not be supported.</p>
+  </div>
+</div>
         <div class="faq-item">
           <button class="faq-trigger" onclick="toggleFaq(this)">
             <span>Is the hackathon online or offline?</span>
